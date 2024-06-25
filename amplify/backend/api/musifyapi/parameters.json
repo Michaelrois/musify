@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "musifyapi",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authmusify63103637",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
