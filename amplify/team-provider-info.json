@@ -17,6 +17,12 @@
       },
       "api": {
         "musifyapi": {}
+      },
+      "function": {
+        "musifymike": {
+          "deploymentBucketName": "amplify-musify-dev-5bde2-deployment",
+          "s3Key": "amplify-builds/musifymike-637a55764f30376c3859-build.zip"
+        }
       }
     }
   }

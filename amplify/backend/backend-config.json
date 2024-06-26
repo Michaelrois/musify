@@ -61,5 +61,30 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
+  },
+  "function": {
+    "musifymike": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_musifymike_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "musifymike"
+        }
+      ]
+    },
+    "AMPLIFY_function_musifymike_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "musifymike"
+        }
+      ]
+    }
   }
 }
