@@ -79,8 +79,11 @@ export const createArtist = /* GraphQL */ `mutation CreateArtist(
     id
     name
     label
+    date
+    description
     personalPageLink
     image
+    tooltipText
     songs {
       nextToken
       startedAt
@@ -107,8 +110,11 @@ export const updateArtist = /* GraphQL */ `mutation UpdateArtist(
     id
     name
     label
+    date
+    description
     personalPageLink
     image
+    tooltipText
     songs {
       nextToken
       startedAt
@@ -135,8 +141,11 @@ export const deleteArtist = /* GraphQL */ `mutation DeleteArtist(
     id
     name
     label
+    date
+    description
     personalPageLink
     image
+    tooltipText
     songs {
       nextToken
       startedAt
@@ -165,8 +174,11 @@ export const createSong = /* GraphQL */ `mutation CreateSong(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version
@@ -203,8 +215,11 @@ export const updateSong = /* GraphQL */ `mutation UpdateSong(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version
@@ -241,8 +256,11 @@ export const deleteSong = /* GraphQL */ `mutation DeleteSong(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version

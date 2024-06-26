@@ -93,6 +93,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "date": {
+                    "name": "date",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "personalPageLink": {
                     "name": "personalPageLink",
                     "isArray": false,
@@ -105,6 +119,13 @@ export const schema = {
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "tooltipText": {
+                    "name": "tooltipText",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "songs": {
@@ -277,5 +298,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "09c61e22e11a32220b115abe3c2bece1"
+    "version": "24af8bd1c3c27a26846b8b89183392d8"
 };

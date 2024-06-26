@@ -12,8 +12,11 @@ type Artist @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
   label: String
+  date: AWSDateTime
+  description: String
   personalPageLink: String
   image: String!
+  tooltipText: String
   songs: [Song] @hasMany
 }
 

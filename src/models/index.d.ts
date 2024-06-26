@@ -44,8 +44,11 @@ type EagerArtist = {
   readonly id: string;
   readonly name: string;
   readonly label?: string | null;
+  readonly date?: string | null;
+  readonly description?: string | null;
   readonly personalPageLink?: string | null;
   readonly image: string;
+  readonly tooltipText?: string | null;
   readonly songs?: (Song | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -59,8 +62,11 @@ type LazyArtist = {
   readonly id: string;
   readonly name: string;
   readonly label?: string | null;
+  readonly date?: string | null;
+  readonly description?: string | null;
   readonly personalPageLink?: string | null;
   readonly image: string;
+  readonly tooltipText?: string | null;
   readonly songs: AsyncCollection<Song>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

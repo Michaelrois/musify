@@ -82,8 +82,11 @@ export const getArtist = /* GraphQL */ `query GetArtist($id: ID!) {
     id
     name
     label
+    date
+    description
     personalPageLink
     image
+    tooltipText
     songs {
       nextToken
       startedAt
@@ -109,8 +112,11 @@ export const listArtists = /* GraphQL */ `query ListArtists(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version
@@ -144,8 +150,11 @@ export const syncArtists = /* GraphQL */ `query SyncArtists(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version
@@ -170,8 +179,11 @@ export const getSong = /* GraphQL */ `query GetSong($id: ID!) {
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version

@@ -79,8 +79,11 @@ export const onCreateArtist = /* GraphQL */ `subscription OnCreateArtist(
     id
     name
     label
+    date
+    description
     personalPageLink
     image
+    tooltipText
     songs {
       nextToken
       startedAt
@@ -107,8 +110,11 @@ export const onUpdateArtist = /* GraphQL */ `subscription OnUpdateArtist(
     id
     name
     label
+    date
+    description
     personalPageLink
     image
+    tooltipText
     songs {
       nextToken
       startedAt
@@ -135,8 +141,11 @@ export const onDeleteArtist = /* GraphQL */ `subscription OnDeleteArtist(
     id
     name
     label
+    date
+    description
     personalPageLink
     image
+    tooltipText
     songs {
       nextToken
       startedAt
@@ -165,8 +174,11 @@ export const onCreateSong = /* GraphQL */ `subscription OnCreateSong(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version
@@ -203,8 +215,11 @@ export const onUpdateSong = /* GraphQL */ `subscription OnUpdateSong(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version
@@ -241,8 +256,11 @@ export const onDeleteSong = /* GraphQL */ `subscription OnDeleteSong(
       id
       name
       label
+      date
+      description
       personalPageLink
       image
+      tooltipText
       createdAt
       updatedAt
       _version
