@@ -6,6 +6,7 @@ import { MainScreen } from './screens/MainScreen';
 import styled from "styled-components";
 import {Amplify} from 'aws-amplify';
 import awsExports from './aws-exports';
+import {ArtistProvider} from "./context/ArtistContext";
 import {Authenticator, useAuthenticator, View, useTheme, Heading, Image, Text, Button} from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import {
@@ -304,6 +305,7 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <Authenticator.Provider>
+            <ArtistProvider>
             <Authenticator
                 formFields={formFields}
                 components={components}
@@ -316,6 +318,7 @@ root.render(
                     </View>
                 )}
             </Authenticator>
+            </ArtistProvider>
         </Authenticator.Provider>
     </React.StrictMode>
 );

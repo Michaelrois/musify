@@ -2,23 +2,32 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateArtistInput = {
   id?: string | null,
   name: string,
+  label?: string | null,
+  date?: string | null,
   description?: string | null,
+  personalPageLink?: string | null,
+  image: string,
+  tooltipText?: string | null,
   _version?: number | null,
 };
 
-export type ModelTodoConditionInput = {
+export type ModelArtistConditionInput = {
   name?: ModelStringInput | null,
+  label?: ModelStringInput | null,
+  date?: ModelStringInput | null,
   description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+  personalPageLink?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  tooltipText?: ModelStringInput | null,
+  and?: Array< ModelArtistConditionInput | null > | null,
+  or?: Array< ModelArtistConditionInput | null > | null,
+  not?: ModelArtistConditionInput | null,
   _deleted?: ModelBooleanInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  owner?: ModelStringInput | null,
 };
 
 export type ModelStringInput = {
@@ -68,60 +77,6 @@ export type ModelBooleanInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
-export type Todo = {
-  __typename: "Todo",
-  id: string,
-  name: string,
-  description?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  owner?: string | null,
-};
-
-export type UpdateTodoInput = {
-  id: string,
-  name?: string | null,
-  description?: string | null,
-  _version?: number | null,
-};
-
-export type DeleteTodoInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreateArtistInput = {
-  id?: string | null,
-  name: string,
-  label?: string | null,
-  date?: string | null,
-  description?: string | null,
-  personalPageLink?: string | null,
-  image: string,
-  tooltipText?: string | null,
-  _version?: number | null,
-};
-
-export type ModelArtistConditionInput = {
-  name?: ModelStringInput | null,
-  label?: ModelStringInput | null,
-  date?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  personalPageLink?: ModelStringInput | null,
-  image?: ModelStringInput | null,
-  tooltipText?: ModelStringInput | null,
-  and?: Array< ModelArtistConditionInput | null > | null,
-  or?: Array< ModelArtistConditionInput | null > | null,
-  not?: ModelArtistConditionInput | null,
-  _deleted?: ModelBooleanInput | null,
-  createdAt?: ModelStringInput | null,
-  updatedAt?: ModelStringInput | null,
-  owner?: ModelStringInput | null,
-};
-
 export type Artist = {
   __typename: "Artist",
   id: string,
@@ -138,7 +93,6 @@ export type Artist = {
   _version: number,
   _deleted?: boolean | null,
   _lastChangedAt: number,
-  owner?: string | null,
 };
 
 export type ModelSongConnection = {
@@ -250,26 +204,6 @@ export type DeleteSongInput = {
   _version?: number | null,
 };
 
-export type ModelTodoFilterInput = {
-  id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  createdAt?: ModelStringInput | null,
-  updatedAt?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
-  _deleted?: ModelBooleanInput | null,
-  owner?: ModelStringInput | null,
-};
-
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection",
-  items:  Array<Todo | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
 export type ModelArtistFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -285,7 +219,6 @@ export type ModelArtistFilterInput = {
   or?: Array< ModelArtistFilterInput | null > | null,
   not?: ModelArtistFilterInput | null,
   _deleted?: ModelBooleanInput | null,
-  owner?: ModelStringInput | null,
 };
 
 export type ModelArtistConnection = {
@@ -311,16 +244,21 @@ export type ModelSongFilterInput = {
   owner?: ModelStringInput | null,
 };
 
-export type ModelSubscriptionTodoFilterInput = {
+export type ModelSubscriptionArtistFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
+  label?: ModelSubscriptionStringInput | null,
+  date?: ModelSubscriptionStringInput | null,
   description?: ModelSubscriptionStringInput | null,
+  personalPageLink?: ModelSubscriptionStringInput | null,
+  image?: ModelSubscriptionStringInput | null,
+  tooltipText?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionTodoFilterInput | null > | null,
-  or?: Array< ModelSubscriptionTodoFilterInput | null > | null,
+  and?: Array< ModelSubscriptionArtistFilterInput | null > | null,
+  or?: Array< ModelSubscriptionArtistFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
-  owner?: ModelStringInput | null,
+  artistSongsId?: ModelSubscriptionIDInput | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -353,24 +291,6 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
-export type ModelSubscriptionArtistFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  name?: ModelSubscriptionStringInput | null,
-  label?: ModelSubscriptionStringInput | null,
-  date?: ModelSubscriptionStringInput | null,
-  description?: ModelSubscriptionStringInput | null,
-  personalPageLink?: ModelSubscriptionStringInput | null,
-  image?: ModelSubscriptionStringInput | null,
-  tooltipText?: ModelSubscriptionStringInput | null,
-  createdAt?: ModelSubscriptionStringInput | null,
-  updatedAt?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionArtistFilterInput | null > | null,
-  or?: Array< ModelSubscriptionArtistFilterInput | null > | null,
-  _deleted?: ModelBooleanInput | null,
-  artistSongsId?: ModelSubscriptionIDInput | null,
-  owner?: ModelStringInput | null,
-};
-
 export type ModelSubscriptionSongFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   title?: ModelSubscriptionStringInput | null,
@@ -395,66 +315,6 @@ export type ModelSubscriptionIntInput = {
   between?: Array< number | null > | null,
   in?: Array< number | null > | null,
   notIn?: Array< number | null > | null,
-};
-
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
-};
-
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
-};
-
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
-};
-
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
 };
 
 export type CreateArtistMutationVariables = {
@@ -483,7 +343,6 @@ export type CreateArtistMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -513,7 +372,6 @@ export type UpdateArtistMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -543,7 +401,6 @@ export type DeleteArtistMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -571,7 +428,6 @@ export type CreateSongMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null,
     title: string,
     duration: number,
@@ -611,7 +467,6 @@ export type UpdateSongMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null,
     title: string,
     duration: number,
@@ -651,7 +506,6 @@ export type DeleteSongMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null,
     title: string,
     duration: number,
@@ -664,78 +518,6 @@ export type DeleteSongMutation = {
     _lastChangedAt: number,
     artistSongsId?: string | null,
     owner?: string | null,
-  } | null,
-};
-
-export type GetTodoQueryVariables = {
-  id: string,
-};
-
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListTodosQuery = {
-  listTodos?:  {
-    __typename: "ModelTodoConnection",
-    items:  Array< {
-      __typename: "Todo",
-      id: string,
-      name: string,
-      description?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      owner?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncTodosQuery = {
-  syncTodos?:  {
-    __typename: "ModelTodoConnection",
-    items:  Array< {
-      __typename: "Todo",
-      id: string,
-      name: string,
-      description?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      owner?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
   } | null,
 };
 
@@ -764,7 +546,6 @@ export type GetArtistQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -792,7 +573,6 @@ export type ListArtistsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -824,7 +604,6 @@ export type SyncArtistsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -854,7 +633,6 @@ export type GetSongQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null,
     title: string,
     duration: number,
@@ -929,69 +707,8 @@ export type SyncSongsQuery = {
   } | null,
 };
 
-export type OnCreateTodoSubscriptionVariables = {
-  filter?: ModelSubscriptionTodoFilterInput | null,
-  owner?: string | null,
-};
-
-export type OnCreateTodoSubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnUpdateTodoSubscriptionVariables = {
-  filter?: ModelSubscriptionTodoFilterInput | null,
-  owner?: string | null,
-};
-
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnDeleteTodoSubscriptionVariables = {
-  filter?: ModelSubscriptionTodoFilterInput | null,
-  owner?: string | null,
-};
-
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
 export type OnCreateArtistSubscriptionVariables = {
   filter?: ModelSubscriptionArtistFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnCreateArtistSubscription = {
@@ -1015,13 +732,11 @@ export type OnCreateArtistSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
 export type OnUpdateArtistSubscriptionVariables = {
   filter?: ModelSubscriptionArtistFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnUpdateArtistSubscription = {
@@ -1045,13 +760,11 @@ export type OnUpdateArtistSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
 export type OnDeleteArtistSubscriptionVariables = {
   filter?: ModelSubscriptionArtistFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnDeleteArtistSubscription = {
@@ -1075,7 +788,6 @@ export type OnDeleteArtistSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -1103,7 +815,6 @@ export type OnCreateSongSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null,
     title: string,
     duration: number,
@@ -1143,7 +854,6 @@ export type OnUpdateSongSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null,
     title: string,
     duration: number,
@@ -1183,7 +893,6 @@ export type OnDeleteSongSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      owner?: string | null,
     } | null,
     title: string,
     duration: number,

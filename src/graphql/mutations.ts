@@ -8,69 +8,6 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const createTodo = /* GraphQL */ `mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  createTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    owner
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.CreateTodoMutationVariables,
-  APITypes.CreateTodoMutation
->;
-export const updateTodo = /* GraphQL */ `mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  updateTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    owner
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.UpdateTodoMutationVariables,
-  APITypes.UpdateTodoMutation
->;
-export const deleteTodo = /* GraphQL */ `mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  deleteTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    owner
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.DeleteTodoMutationVariables,
-  APITypes.DeleteTodoMutation
->;
 export const createArtist = /* GraphQL */ `mutation CreateArtist(
   $input: CreateArtistInput!
   $condition: ModelArtistConditionInput
@@ -94,7 +31,6 @@ export const createArtist = /* GraphQL */ `mutation CreateArtist(
     _version
     _deleted
     _lastChangedAt
-    owner
     __typename
   }
 }
@@ -125,7 +61,6 @@ export const updateArtist = /* GraphQL */ `mutation UpdateArtist(
     _version
     _deleted
     _lastChangedAt
-    owner
     __typename
   }
 }
@@ -156,7 +91,6 @@ export const deleteArtist = /* GraphQL */ `mutation DeleteArtist(
     _version
     _deleted
     _lastChangedAt
-    owner
     __typename
   }
 }
@@ -184,7 +118,6 @@ export const createSong = /* GraphQL */ `mutation CreateSong(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     title
@@ -225,7 +158,6 @@ export const updateSong = /* GraphQL */ `mutation UpdateSong(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     title
@@ -266,7 +198,6 @@ export const deleteSong = /* GraphQL */ `mutation DeleteSong(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     title

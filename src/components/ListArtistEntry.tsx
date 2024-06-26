@@ -6,7 +6,7 @@ interface Props {
     name: string | null | undefined;
     image: string | null | undefined;
     tooltipText: string | null | undefined;
-    //onClick: () => void;
+    handleOpenModal: () => void;
 }
 
 const HtmlTooltip = styled (({ className, ...props} : TooltipProps) =>(
@@ -21,7 +21,8 @@ const HtmlTooltip = styled (({ className, ...props} : TooltipProps) =>(
     },
 }));
 
-export const ListArtistEntry = ({ id, name, image, tooltipText }: Props) => {
+export const ListArtistEntry = ({ id, name, image, handleOpenModal, tooltipText }: Props) => {
+
     return (
         <HtmlTooltip
             title={tooltipText}
@@ -29,7 +30,7 @@ export const ListArtistEntry = ({ id, name, image, tooltipText }: Props) => {
             <ListArtistEntryDiv
                 key={id}
                 $image={image ? image: "default"}
-                //onclick={() => {}}
+                onClick={handleOpenModal}
             >
                 <Heading>{name}</Heading>
             </ListArtistEntryDiv>
@@ -53,14 +54,15 @@ const scaleAnimation = keyframes`
 
 const ListArtistEntryDiv = styled.div<ListArtistEntryProps>`
     cursor: pointer;
-    width: 40%;
-    height: 500px;
+    width: 30%;
+    height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(/images/${(props) => props.$image}.jpg);
+    background-image: url(${(props) => props.$image});
     transition: transform 0.3s ease-in-out;
     margin-bottom: 2rem;
-    border: 2px black solid;
+    border: 3px darkred double;
+    border-radius: 8px;
     box-shadow: 10px 10px rgba(128, 128, 128, 0.6);
     
     &:hover {
@@ -69,12 +71,15 @@ const ListArtistEntryDiv = styled.div<ListArtistEntryProps>`
 `;
 
 const Heading = styled.h1`
+    width: 80%;
+    margin: 1.5rem auto;
     background-color: rgba(128, 128, 128, 0.5); // Transparent grey background
-    color: white; // White text
-    font-size: 3rem;
-    text-shadow: 2px 2px 5px black;
+    color: darkred; // Darkred text
+    font-size: 4rem;
+    text-shadow: 3px 6px 5px black;
     text-align: center;
     padding: 1rem;
-    border-radius: 4px;
-    border: 0.5px black solid;
+    border-radius: 8px;
+    border: 0.2px darkred solid;
+    box-shadow: 3px 4px 5px black;
 `;

@@ -8,74 +8,8 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateTodo = /* GraphQL */ `subscription OnCreateTodo(
-  $filter: ModelSubscriptionTodoFilterInput
-  $owner: String
-) {
-  onCreateTodo(filter: $filter, owner: $owner) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    owner
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnCreateTodoSubscriptionVariables,
-  APITypes.OnCreateTodoSubscription
->;
-export const onUpdateTodo = /* GraphQL */ `subscription OnUpdateTodo(
-  $filter: ModelSubscriptionTodoFilterInput
-  $owner: String
-) {
-  onUpdateTodo(filter: $filter, owner: $owner) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    owner
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnUpdateTodoSubscriptionVariables,
-  APITypes.OnUpdateTodoSubscription
->;
-export const onDeleteTodo = /* GraphQL */ `subscription OnDeleteTodo(
-  $filter: ModelSubscriptionTodoFilterInput
-  $owner: String
-) {
-  onDeleteTodo(filter: $filter, owner: $owner) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    owner
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnDeleteTodoSubscriptionVariables,
-  APITypes.OnDeleteTodoSubscription
->;
-export const onCreateArtist = /* GraphQL */ `subscription OnCreateArtist(
-  $filter: ModelSubscriptionArtistFilterInput
-  $owner: String
-) {
-  onCreateArtist(filter: $filter, owner: $owner) {
+export const onCreateArtist = /* GraphQL */ `subscription OnCreateArtist($filter: ModelSubscriptionArtistFilterInput) {
+  onCreateArtist(filter: $filter) {
     id
     name
     label
@@ -94,7 +28,6 @@ export const onCreateArtist = /* GraphQL */ `subscription OnCreateArtist(
     _version
     _deleted
     _lastChangedAt
-    owner
     __typename
   }
 }
@@ -102,11 +35,8 @@ export const onCreateArtist = /* GraphQL */ `subscription OnCreateArtist(
   APITypes.OnCreateArtistSubscriptionVariables,
   APITypes.OnCreateArtistSubscription
 >;
-export const onUpdateArtist = /* GraphQL */ `subscription OnUpdateArtist(
-  $filter: ModelSubscriptionArtistFilterInput
-  $owner: String
-) {
-  onUpdateArtist(filter: $filter, owner: $owner) {
+export const onUpdateArtist = /* GraphQL */ `subscription OnUpdateArtist($filter: ModelSubscriptionArtistFilterInput) {
+  onUpdateArtist(filter: $filter) {
     id
     name
     label
@@ -125,7 +55,6 @@ export const onUpdateArtist = /* GraphQL */ `subscription OnUpdateArtist(
     _version
     _deleted
     _lastChangedAt
-    owner
     __typename
   }
 }
@@ -133,11 +62,8 @@ export const onUpdateArtist = /* GraphQL */ `subscription OnUpdateArtist(
   APITypes.OnUpdateArtistSubscriptionVariables,
   APITypes.OnUpdateArtistSubscription
 >;
-export const onDeleteArtist = /* GraphQL */ `subscription OnDeleteArtist(
-  $filter: ModelSubscriptionArtistFilterInput
-  $owner: String
-) {
-  onDeleteArtist(filter: $filter, owner: $owner) {
+export const onDeleteArtist = /* GraphQL */ `subscription OnDeleteArtist($filter: ModelSubscriptionArtistFilterInput) {
+  onDeleteArtist(filter: $filter) {
     id
     name
     label
@@ -156,7 +82,6 @@ export const onDeleteArtist = /* GraphQL */ `subscription OnDeleteArtist(
     _version
     _deleted
     _lastChangedAt
-    owner
     __typename
   }
 }
@@ -184,7 +109,6 @@ export const onCreateSong = /* GraphQL */ `subscription OnCreateSong(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     title
@@ -225,7 +149,6 @@ export const onUpdateSong = /* GraphQL */ `subscription OnUpdateSong(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     title
@@ -266,7 +189,6 @@ export const onDeleteSong = /* GraphQL */ `subscription OnDeleteSong(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     title

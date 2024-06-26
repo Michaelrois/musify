@@ -8,75 +8,6 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getTodo = /* GraphQL */ `query GetTodo($id: ID!) {
-  getTodo(id: $id) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    owner
-    __typename
-  }
-}
-` as GeneratedQuery<APITypes.GetTodoQueryVariables, APITypes.GetTodoQuery>;
-export const listTodos = /* GraphQL */ `query ListTodos(
-  $filter: ModelTodoFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-` as GeneratedQuery<APITypes.ListTodosQueryVariables, APITypes.ListTodosQuery>;
-export const syncTodos = /* GraphQL */ `query SyncTodos(
-  $filter: ModelTodoFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncTodos(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-` as GeneratedQuery<APITypes.SyncTodosQueryVariables, APITypes.SyncTodosQuery>;
 export const getArtist = /* GraphQL */ `query GetArtist($id: ID!) {
   getArtist(id: $id) {
     id
@@ -97,7 +28,6 @@ export const getArtist = /* GraphQL */ `query GetArtist($id: ID!) {
     _version
     _deleted
     _lastChangedAt
-    owner
     __typename
   }
 }
@@ -122,7 +52,6 @@ export const listArtists = /* GraphQL */ `query ListArtists(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     nextToken
@@ -160,7 +89,6 @@ export const syncArtists = /* GraphQL */ `query SyncArtists(
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     nextToken
@@ -189,7 +117,6 @@ export const getSong = /* GraphQL */ `query GetSong($id: ID!) {
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
     title
