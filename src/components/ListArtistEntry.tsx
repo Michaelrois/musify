@@ -54,7 +54,7 @@ const scaleAnimation = keyframes`
 
 const ListArtistEntryDiv = styled.div<ListArtistEntryProps>`
     cursor: pointer;
-    width: 30%;
+    width: 50%;
     height: 600px;
     background-repeat: no-repeat;
     background-size: cover;

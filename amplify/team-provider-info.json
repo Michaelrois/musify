@@ -16,12 +16,13 @@
         "musify63103637": {}
       },
       "api": {
-        "musifyapi": {}
+        "musifyapi": {},
+        "musifyrestapi": {}
       },
       "function": {
         "musifymike": {
           "deploymentBucketName": "amplify-musify-dev-5bde2-deployment",
-          "s3Key": "amplify-builds/musifymike-637a55764f30376c3859-build.zip"
+          "s3Key": "amplify-builds/musifymike-734e6e4f782f35574563-build.zip"
         }
       }
     }

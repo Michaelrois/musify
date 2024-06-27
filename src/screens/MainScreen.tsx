@@ -8,6 +8,8 @@ import {useArtistContext} from "../context/ArtistContext";
 import {getCurrentUser} from "aws-amplify/auth";
 import {Amplify} from "aws-amplify";
 import awsConfig from "../amplifyconfiguration.json";
+import { signOut } from 'aws-amplify/auth';
+import FileUpload from "../components/FileUpload";
 
 Amplify.configure(awsConfig)
 
@@ -16,17 +18,19 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 465,
+    width: '50%',
+    height: '60%',
     bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
+    border: '6px double darkred',
+    borderRadius: '10px',
+    boxShadow: '5px 7px 10px black',
     p: 4,
 };
 
 const closeIconStyle = {
     position: "relative",
-    top: "-28px",
-    right: "-400px",
+    top: "-5%",
+    right: "-99.5%",
     cursor: "pointer",
     color: "red",
     border: "2px black solid",
@@ -36,9 +40,12 @@ const closeIconStyle = {
 const modalTitleStyle = {
     position: "relative",
     textAlign: "center",
-    top: "-55px",
-    color: "black",
+    top: "-10%",
+    color: "darkred",
+    fontSize: "3rem",
     fontWeight: "bold",
+    textShadow: "2px 3px 5px black",
+    textDecoration: "underline"
 }
 
 const MainTitle = styled.h1`
@@ -61,12 +68,20 @@ export const MainScreen = () => {
     const [open, setOpen] = useState(false);
     const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
     const [userId, setUserId] = useState<string | null>(null);
-    console.log(artists);
+
     useEffect(() => {
         getCurrentUser().then(({userId}) => {
             setUserId(userId);
         })
     }, []);
+
+    const handleSignOut = async () => {
+        try {
+            await signOut();
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    };
 
     const handleOpen = (artist: Artist) => {
         setSelectedArtist(artist);
@@ -76,6 +91,7 @@ export const MainScreen = () => {
 
     return (
     <div>
+        <button onClick={handleSignOut}>LogOut</button>
         <MainTitle>Musify - Artists List</MainTitle>
         <ListArtists>
             {artists.map((artist: Artist) => (
@@ -111,6 +127,8 @@ export const MainScreen = () => {
                 <Typography id="modal-modal-description" sx={{mt: 2}}>
                     {selectedArtist?.description}
                 </Typography>
+                <FileUpload 
+                    username={'mike'} artist={artists[0]} selectedArtist={selectedArtist?.name}/>
             </Box>
         </Modal>
     </div>

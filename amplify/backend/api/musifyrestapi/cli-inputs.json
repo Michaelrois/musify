@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/upload": {
+      "name": "/upload",
+      "lambdaFunction": "musifymike",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/files": {
+      "name": "/files",
+      "lambdaFunction": "musifymike",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

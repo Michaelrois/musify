@@ -1,92 +1,81 @@
-/*
-Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
-    http://aws.amazon.com/apache2.0/
-or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and limitations under the License.
-*/
+const express = require('express');
+const bodyParser = require('body-parser');
+const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
+const multer = require('multer');
+const AWS = require('aws-sdk');
 
+const s3 = new AWS.S3();
 
+// Multer setup to store files in memory
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-
-// declare a new express app
-const app = express()
-app.use(bodyParser.json())
-app.use(awsServerlessExpressMiddleware.eventContext())
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "*")
-  next()
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
 });
 
+// Upload file route
+app.post('/upload', upload.single('file'), (req, res) => {
+  const file = req.file;
+  const username = req.body.username;
 
-/**********************
- * Example get method *
- **********************/
+  const base64File = file.buffer.toString('base64');
 
-app.get('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  if (!file || !username) {
+    return res.status(400).send('No file or username provided.');
+  }
+
+  const uploadParams = {
+    Bucket: 'trymike',
+    Key: `${username}/${file.originalname}`,
+    Body: Buffer.from(base64File, 'base64'),
+    ContentType: file.mimetype,
+  };
+
+  s3.upload(uploadParams, (err, data) => {
+    if (err) {
+      console.error('Error uploading file:', err);
+      return res.status(500).send('Error uploading file.');
+    }
+
+    res.send(`File uploaded successfully. ${data.Location}`);
+  });
 });
 
-app.get('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get('/files/:username', async (req, res) => {
+  const username = req.params.username;
+  const params = {
+    Bucket: 'trymike',
+    Prefix: `${username}/`
+  };
+
+  try {
+    const data = await s3.listObjectsV2(params).promise();
+    const files = data.Contents.map(file => ({
+      Key: file.Key,
+      LastModified: file.LastModified,
+      Size: file.Size,
+      Url: s3.getSignedUrl('getObject', { Bucket: 'trymike', Key: file.Key, Expires: 60 })
+    }));
+
+    res.json(files);
+
+  } catch (err) {
+    console.error('Error listing files:', err);
+    res.status(500).send('Error listing files.');
+  }
 });
 
-/****************************
-* Example post method *
-****************************/
-
-app.post('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+app.listen(3003, function() {
+  console.log("App started");
 });
 
-app.post('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example put method *
-****************************/
-
-app.put('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-app.put('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example delete method *
-****************************/
-
-app.delete('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.delete('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.listen(3000, function() {
-    console.log("App started")
-});
-
-// Export the app object. When executing the application local this does nothing. However,
-// to port it to AWS Lambda we will create a wrapper around that will load the app from
-// this file
-module.exports = app
+module.exports = app;
