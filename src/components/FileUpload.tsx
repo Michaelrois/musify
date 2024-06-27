@@ -17,12 +17,27 @@ const FileUploadDiv = styled.div`
 const InputContainer = styled.div`
     display: flex;
     flex-direction: row;
-    max-width: 95%;
+    width: 65%;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    margin: 1rem;
     border: 1px solid #ccc;
+`;
+
+const CustomInputFile = styled.input.attrs({ type: 'file' })`
+    color: darkred;
+    font-weight: bold;
+    
+&::file-selector-button {
+    color: darkred;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+    border: 2px darkred solid;
+    border-radius: 5px;
+    box-shadow: 2px 3px 5px black;
+    padding: 5px;
+    cursor: pointer;
+  }
 `;
 
 type Props = {
@@ -72,13 +87,37 @@ const FileUpload: React.FC<Props> = ({artist, username, selectedArtist}) => {
 
     return (
         <FileUploadDiv>
-            <h1>You can add a new {selectedArtist} mp3 song</h1>
+            <h2
+                style={{
+                    color: "darkred",
+                    fontSize: "2rem",
+                    fontWeight: "bold",
+                    textShadow: "2px 3px 5px black"
+                }}
+            >
+                You can add a new {selectedArtist} mp3 song
+            </h2>
             <InputContainer>
-                <input
+                <CustomInputFile
                     type="file"
                     onChange={handleFileChange}
                 />
-                <button onClick={handleUpload}>Upload</button>
+                <button
+                    onClick={handleUpload}
+                    style={{
+                        color: "darkred",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                        textShadow: "1px 1px 2px black",
+                        border: "2px darkred solid",
+                        borderRadius: "5px",
+                        boxShadow: "2px 3px 5px black",
+                        padding: "5px",
+                        cursor: "pointer"
+                    }}
+                >
+                    Upload
+                </button>
                 {message && <p>{message}</p>}
             </InputContainer>
         </FileUploadDiv>

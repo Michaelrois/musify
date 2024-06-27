@@ -10,6 +10,7 @@ import {Amplify} from "aws-amplify";
 import awsConfig from "../amplifyconfiguration.json";
 import { signOut } from 'aws-amplify/auth';
 import FileUpload from "../components/FileUpload";
+import AudioComponent from "../components/AudioComponent";
 
 Amplify.configure(awsConfig)
 
@@ -127,6 +128,7 @@ export const MainScreen = () => {
                 <Typography id="modal-modal-description" sx={{mt: 2}}>
                     {selectedArtist?.description}
                 </Typography>
+                <AudioComponent />
                 <FileUpload 
                     username={'mike'} artist={artists[0]} selectedArtist={selectedArtist?.name}/>
             </Box>
