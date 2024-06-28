@@ -204,6 +204,90 @@ export type DeleteSongInput = {
   _version?: number | null,
 };
 
+export type CreateUserProfileInput = {
+  id?: string | null,
+  userId?: string | null,
+  email?: string | null,
+  firstName?: string | null,
+  lastName?: string | null,
+  phoneNumber?: string | null,
+  address?: AddressInput | null,
+  avatar?: string | null,
+  bio?: string | null,
+  _version?: number | null,
+};
+
+export type AddressInput = {
+  street?: string | null,
+  city?: string | null,
+  stateProvince?: string | null,
+  zipCode?: string | null,
+  country?: string | null,
+};
+
+export type ModelUserProfileConditionInput = {
+  userId?: ModelStringInput | null,
+  email?: ModelStringInput | null,
+  firstName?: ModelStringInput | null,
+  lastName?: ModelStringInput | null,
+  phoneNumber?: ModelStringInput | null,
+  avatar?: ModelStringInput | null,
+  bio?: ModelStringInput | null,
+  and?: Array< ModelUserProfileConditionInput | null > | null,
+  or?: Array< ModelUserProfileConditionInput | null > | null,
+  not?: ModelUserProfileConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
+};
+
+export type UserProfile = {
+  __typename: "UserProfile",
+  id: string,
+  userId?: string | null,
+  email?: string | null,
+  firstName?: string | null,
+  lastName?: string | null,
+  phoneNumber?: string | null,
+  address?: Address | null,
+  avatar?: string | null,
+  bio?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  owner?: string | null,
+};
+
+export type Address = {
+  __typename: "Address",
+  street?: string | null,
+  city?: string | null,
+  stateProvince?: string | null,
+  zipCode?: string | null,
+  country?: string | null,
+};
+
+export type UpdateUserProfileInput = {
+  id: string,
+  userId?: string | null,
+  email?: string | null,
+  firstName?: string | null,
+  lastName?: string | null,
+  phoneNumber?: string | null,
+  address?: AddressInput | null,
+  avatar?: string | null,
+  bio?: string | null,
+  _version?: number | null,
+};
+
+export type DeleteUserProfileInput = {
+  id: string,
+  _version?: number | null,
+};
+
 export type ModelArtistFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -242,6 +326,31 @@ export type ModelSongFilterInput = {
   _deleted?: ModelBooleanInput | null,
   artistSongsId?: ModelIDInput | null,
   owner?: ModelStringInput | null,
+};
+
+export type ModelUserProfileFilterInput = {
+  id?: ModelIDInput | null,
+  userId?: ModelStringInput | null,
+  email?: ModelStringInput | null,
+  firstName?: ModelStringInput | null,
+  lastName?: ModelStringInput | null,
+  phoneNumber?: ModelStringInput | null,
+  avatar?: ModelStringInput | null,
+  bio?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelUserProfileFilterInput | null > | null,
+  or?: Array< ModelUserProfileFilterInput | null > | null,
+  not?: ModelUserProfileFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
+  owner?: ModelStringInput | null,
+};
+
+export type ModelUserProfileConnection = {
+  __typename: "ModelUserProfileConnection",
+  items:  Array<UserProfile | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
 };
 
 export type ModelSubscriptionArtistFilterInput = {
@@ -315,6 +424,23 @@ export type ModelSubscriptionIntInput = {
   between?: Array< number | null > | null,
   in?: Array< number | null > | null,
   notIn?: Array< number | null > | null,
+};
+
+export type ModelSubscriptionUserProfileFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  userId?: ModelSubscriptionStringInput | null,
+  email?: ModelSubscriptionStringInput | null,
+  firstName?: ModelSubscriptionStringInput | null,
+  lastName?: ModelSubscriptionStringInput | null,
+  phoneNumber?: ModelSubscriptionStringInput | null,
+  avatar?: ModelSubscriptionStringInput | null,
+  bio?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type CreateArtistMutationVariables = {
@@ -521,6 +647,105 @@ export type DeleteSongMutation = {
   } | null,
 };
 
+export type CreateUserProfileMutationVariables = {
+  input: CreateUserProfileInput,
+  condition?: ModelUserProfileConditionInput | null,
+};
+
+export type CreateUserProfileMutation = {
+  createUserProfile?:  {
+    __typename: "UserProfile",
+    id: string,
+    userId?: string | null,
+    email?: string | null,
+    firstName?: string | null,
+    lastName?: string | null,
+    phoneNumber?: string | null,
+    address?:  {
+      __typename: "Address",
+      street?: string | null,
+      city?: string | null,
+      stateProvince?: string | null,
+      zipCode?: string | null,
+      country?: string | null,
+    } | null,
+    avatar?: string | null,
+    bio?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateUserProfileMutationVariables = {
+  input: UpdateUserProfileInput,
+  condition?: ModelUserProfileConditionInput | null,
+};
+
+export type UpdateUserProfileMutation = {
+  updateUserProfile?:  {
+    __typename: "UserProfile",
+    id: string,
+    userId?: string | null,
+    email?: string | null,
+    firstName?: string | null,
+    lastName?: string | null,
+    phoneNumber?: string | null,
+    address?:  {
+      __typename: "Address",
+      street?: string | null,
+      city?: string | null,
+      stateProvince?: string | null,
+      zipCode?: string | null,
+      country?: string | null,
+    } | null,
+    avatar?: string | null,
+    bio?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteUserProfileMutationVariables = {
+  input: DeleteUserProfileInput,
+  condition?: ModelUserProfileConditionInput | null,
+};
+
+export type DeleteUserProfileMutation = {
+  deleteUserProfile?:  {
+    __typename: "UserProfile",
+    id: string,
+    userId?: string | null,
+    email?: string | null,
+    firstName?: string | null,
+    lastName?: string | null,
+    phoneNumber?: string | null,
+    address?:  {
+      __typename: "Address",
+      street?: string | null,
+      city?: string | null,
+      stateProvince?: string | null,
+      zipCode?: string | null,
+      country?: string | null,
+    } | null,
+    avatar?: string | null,
+    bio?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
 export type GetArtistQueryVariables = {
   id: string,
 };
@@ -700,6 +925,101 @@ export type SyncSongsQuery = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
       artistSongsId?: string | null,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type GetUserProfileQueryVariables = {
+  id: string,
+};
+
+export type GetUserProfileQuery = {
+  getUserProfile?:  {
+    __typename: "UserProfile",
+    id: string,
+    userId?: string | null,
+    email?: string | null,
+    firstName?: string | null,
+    lastName?: string | null,
+    phoneNumber?: string | null,
+    address?:  {
+      __typename: "Address",
+      street?: string | null,
+      city?: string | null,
+      stateProvince?: string | null,
+      zipCode?: string | null,
+      country?: string | null,
+    } | null,
+    avatar?: string | null,
+    bio?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListUserProfilesQueryVariables = {
+  filter?: ModelUserProfileFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListUserProfilesQuery = {
+  listUserProfiles?:  {
+    __typename: "ModelUserProfileConnection",
+    items:  Array< {
+      __typename: "UserProfile",
+      id: string,
+      userId?: string | null,
+      email?: string | null,
+      firstName?: string | null,
+      lastName?: string | null,
+      phoneNumber?: string | null,
+      avatar?: string | null,
+      bio?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncUserProfilesQueryVariables = {
+  filter?: ModelUserProfileFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncUserProfilesQuery = {
+  syncUserProfiles?:  {
+    __typename: "ModelUserProfileConnection",
+    items:  Array< {
+      __typename: "UserProfile",
+      id: string,
+      userId?: string | null,
+      email?: string | null,
+      firstName?: string | null,
+      lastName?: string | null,
+      phoneNumber?: string | null,
+      avatar?: string | null,
+      bio?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
       owner?: string | null,
     } | null >,
     nextToken?: string | null,
@@ -904,6 +1224,105 @@ export type OnDeleteSongSubscription = {
     _deleted?: boolean | null,
     _lastChangedAt: number,
     artistSongsId?: string | null,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateUserProfileSubscriptionVariables = {
+  filter?: ModelSubscriptionUserProfileFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateUserProfileSubscription = {
+  onCreateUserProfile?:  {
+    __typename: "UserProfile",
+    id: string,
+    userId?: string | null,
+    email?: string | null,
+    firstName?: string | null,
+    lastName?: string | null,
+    phoneNumber?: string | null,
+    address?:  {
+      __typename: "Address",
+      street?: string | null,
+      city?: string | null,
+      stateProvince?: string | null,
+      zipCode?: string | null,
+      country?: string | null,
+    } | null,
+    avatar?: string | null,
+    bio?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateUserProfileSubscriptionVariables = {
+  filter?: ModelSubscriptionUserProfileFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateUserProfileSubscription = {
+  onUpdateUserProfile?:  {
+    __typename: "UserProfile",
+    id: string,
+    userId?: string | null,
+    email?: string | null,
+    firstName?: string | null,
+    lastName?: string | null,
+    phoneNumber?: string | null,
+    address?:  {
+      __typename: "Address",
+      street?: string | null,
+      city?: string | null,
+      stateProvince?: string | null,
+      zipCode?: string | null,
+      country?: string | null,
+    } | null,
+    avatar?: string | null,
+    bio?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteUserProfileSubscriptionVariables = {
+  filter?: ModelSubscriptionUserProfileFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteUserProfileSubscription = {
+  onDeleteUserProfile?:  {
+    __typename: "UserProfile",
+    id: string,
+    userId?: string | null,
+    email?: string | null,
+    firstName?: string | null,
+    lastName?: string | null,
+    phoneNumber?: string | null,
+    address?:  {
+      __typename: "Address",
+      street?: string | null,
+      city?: string | null,
+      stateProvince?: string | null,
+      zipCode?: string | null,
+      country?: string | null,
+    } | null,
+    avatar?: string | null,
+    bio?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
     owner?: string | null,
   } | null,
 };

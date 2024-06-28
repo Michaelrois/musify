@@ -209,3 +209,105 @@ export const onDeleteSong = /* GraphQL */ `subscription OnDeleteSong(
   APITypes.OnDeleteSongSubscriptionVariables,
   APITypes.OnDeleteSongSubscription
 >;
+export const onCreateUserProfile = /* GraphQL */ `subscription OnCreateUserProfile(
+  $filter: ModelSubscriptionUserProfileFilterInput
+  $owner: String
+) {
+  onCreateUserProfile(filter: $filter, owner: $owner) {
+    id
+    userId
+    email
+    firstName
+    lastName
+    phoneNumber
+    address {
+      street
+      city
+      stateProvince
+      zipCode
+      country
+      __typename
+    }
+    avatar
+    bio
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateUserProfileSubscriptionVariables,
+  APITypes.OnCreateUserProfileSubscription
+>;
+export const onUpdateUserProfile = /* GraphQL */ `subscription OnUpdateUserProfile(
+  $filter: ModelSubscriptionUserProfileFilterInput
+  $owner: String
+) {
+  onUpdateUserProfile(filter: $filter, owner: $owner) {
+    id
+    userId
+    email
+    firstName
+    lastName
+    phoneNumber
+    address {
+      street
+      city
+      stateProvince
+      zipCode
+      country
+      __typename
+    }
+    avatar
+    bio
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateUserProfileSubscriptionVariables,
+  APITypes.OnUpdateUserProfileSubscription
+>;
+export const onDeleteUserProfile = /* GraphQL */ `subscription OnDeleteUserProfile(
+  $filter: ModelSubscriptionUserProfileFilterInput
+  $owner: String
+) {
+  onDeleteUserProfile(filter: $filter, owner: $owner) {
+    id
+    userId
+    email
+    firstName
+    lastName
+    phoneNumber
+    address {
+      street
+      city
+      stateProvince
+      zipCode
+      country
+      __typename
+    }
+    avatar
+    bio
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteUserProfileSubscriptionVariables,
+  APITypes.OnDeleteUserProfileSubscription
+>;

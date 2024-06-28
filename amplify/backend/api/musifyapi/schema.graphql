@@ -20,3 +20,23 @@ type Song @model @auth(rules: [{ allow: owner }, {allow: public, provider: apiKe
   album: String!
   releaseDate: String!
 }
+
+type UserProfile @model @auth(rules: [{ allow: owner }]){
+  id: ID!
+  userId: String
+  email: String
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  address: Address
+  avatar: String
+  bio: String
+}
+
+type Address {
+  street: String
+  city: String
+  stateProvince: String
+  zipCode: String
+  country: String
+}

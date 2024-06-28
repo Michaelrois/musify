@@ -10,6 +10,7 @@ import {Amplify} from "aws-amplify";
 import awsConfig from "../amplifyconfiguration.json";
 import { signOut } from 'aws-amplify/auth';
 import FileUpload from "../components/FileUpload";
+import NavigationBar from "../components/NavigationBar";
 import AudioComponent from "../components/AudioComponent";
 
 Amplify.configure(awsConfig)
@@ -92,7 +93,7 @@ export const MainScreen = () => {
 
     return (
     <div>
-        <button onClick={handleSignOut}>LogOut</button>
+    <NavigationBar />
         <MainTitle>Musify - Artists List</MainTitle>
         <ListArtists>
             {artists.map((artist: Artist) => (
