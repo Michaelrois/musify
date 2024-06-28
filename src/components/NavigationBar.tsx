@@ -42,18 +42,6 @@ const settings = [
         }
     },
     {
-        name: 'Account',
-        callback: () => {
-            window.location.href = '/account';
-        }
-    },
-    {
-        name: 'Dashboard',
-        callback: () => {
-            window.location.href = '/dashboard';
-        }
-    },
-    {
         name: 'Logout',
         callback: handleSignOut
     }

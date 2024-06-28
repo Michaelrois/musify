@@ -37,6 +37,28 @@ const CustomInputFile = styled.input.attrs({ type: 'file' })`
     box-shadow: 2px 3px 5px black;
     padding: 5px;
     cursor: pointer;
+
+    &:hover {
+        background-color: darkred;
+        color: white;
+    }
+  }
+`;
+
+const UploadButton = styled.button`
+  color: darkred;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  border: 2px darkred solid;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px black;
+  padding: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkred;
+    color: white;
   }
 `;
 
@@ -102,22 +124,11 @@ const FileUpload: React.FC<Props> = ({artist, username, selectedArtist}) => {
                     type="file"
                     onChange={handleFileChange}
                 />
-                <button
+                <UploadButton
                     onClick={handleUpload}
-                    style={{
-                        color: "darkred",
-                        fontSize: "1rem",
-                        fontWeight: "bold",
-                        textShadow: "1px 1px 2px black",
-                        border: "2px darkred solid",
-                        borderRadius: "5px",
-                        boxShadow: "2px 3px 5px black",
-                        padding: "5px",
-                        cursor: "pointer"
-                    }}
                 >
                     Upload
-                </button>
+                </UploadButton>
                 {message && <p>{message}</p>}
             </InputContainer>
         </FileUploadDiv>

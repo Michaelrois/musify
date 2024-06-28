@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {Box, Modal, Typography} from "@mui/material";
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import styled from "styled-components";
@@ -12,6 +12,7 @@ import { signOut } from 'aws-amplify/auth';
 import FileUpload from "../components/FileUpload";
 import NavigationBar from "../components/NavigationBar";
 import AudioComponent from "../components/AudioComponent";
+import axios from "axios";
 
 Amplify.configure(awsConfig)
 
@@ -65,15 +66,46 @@ const ListArtists = styled.div`
     align-items: center;
 `;
 
+const ListItem = styled.li`
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: underline;
+  list-style-type: none;
+  color: darkred;
+
+  &:hover {
+    color: #2d10e6;
+  }
+`;
+
+interface FileData {
+    Key: string;
+    Size: number;
+    LastModified: string;
+    Url: string;
+}
+
 export const MainScreen = () => {
     const {artists} = useArtistContext();
     const [open, setOpen] = useState(false);
     const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
     const [userId, setUserId] = useState<string | null>(null);
+    const [fileData, setFileData] = useState<FileData[] | null>(null);
+    const audioRef = useRef<HTMLAudioElement>(null);
 
     useEffect(() => {
         getCurrentUser().then(({userId}) => {
             setUserId(userId);
+        })
+    }, []);
+
+    useEffect(() => {
+        axios.get('https://69xikljut5.execute-api.us-east-1.amazonaws.com/dev/files/mike').then(response => {
+            console.log(response.data);
+            setFileData(response.data);
+        }).catch(error => {
+            console.error('Error fetching files:', error);
         })
     }, []);
 
@@ -90,6 +122,13 @@ export const MainScreen = () => {
         setOpen(true)
     };
     const handleClose = () => setOpen(false);
+
+    const changeSong = (url: string) => {
+        if (audioRef.current) {
+            audioRef.current.src = url;
+            audioRef.current.play();
+        }
+    };
 
     return (
     <div>
@@ -129,7 +168,24 @@ export const MainScreen = () => {
                 <Typography id="modal-modal-description" sx={{mt: 2}}>
                     {selectedArtist?.description}
                 </Typography>
-                <AudioComponent />
+                {selectedArtist &&
+                <ul>
+                    {fileData
+                        ?.filter((file: FileData) => file.Key.includes(selectedArtist.name))
+                        .map((file: FileData) => {
+                            const fileName = file.Key.split('/').pop(); // Extract file name
+
+                            return (
+                                <ListItem
+                                    key={file.Key}
+                                    onClick={() => changeSong(file.Url)}
+                                >
+                                    {fileName}
+                                </ListItem>
+                            );
+                        })}
+                </ul>}
+                <AudioComponent audioRef={audioRef} />
                 <FileUpload 
                     username={'mike'} artist={artists[0]} selectedArtist={selectedArtist?.name}/>
             </Box>

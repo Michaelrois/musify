@@ -1,13 +1,47 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
+}
+
+.container {
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 3.5rem;
+  border: 1.5px solid black;
+  box-shadow: 4px 3px darkred;
+  padding-bottom: 1.5rem;
+}
+
+.appBar {
+  background-color: darkred;
+}
+
+.navbar {
+  background-color: darkred;
+  color: white;
+}
+
+.profileCreatorBtn {
+  color: darkred;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  border: 2px darkred solid;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px black;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.profileCreatorBtn:hover {
+  background-color: darkred;
+  color: white;
 }

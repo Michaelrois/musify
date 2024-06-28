@@ -13,6 +13,8 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import {CreateProfileScreen} from "./screens/CreateProfileScreen";
+import {UserProfileScreen} from "./screens/UserProfileScreen";
 
 Amplify.configure(awsExports);
 
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainScreen/>,
+    },
+    {
+        path: "/createProfile",
+        element: <CreateProfileScreen/>,
+    },
+    {
+        path: "/profile",
+        element: <UserProfileScreen/>
     },
 ]);
 
