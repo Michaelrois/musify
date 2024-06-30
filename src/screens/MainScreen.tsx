@@ -8,7 +8,6 @@ import {useArtistContext} from "../context/ArtistContext";
 import {getCurrentUser} from "aws-amplify/auth";
 import {Amplify} from "aws-amplify";
 import awsConfig from "../amplifyconfiguration.json";
-import { signOut } from 'aws-amplify/auth';
 import FileUpload from "../components/FileUpload";
 import NavigationBar from "../components/NavigationBar";
 import AudioComponent from "../components/AudioComponent";
@@ -22,7 +21,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: '50%',
-    height: '60%',
+    height: 'calc(auto)',
     bgcolor: 'background.paper',
     border: '6px double darkred',
     borderRadius: '10px',
@@ -32,7 +31,7 @@ const style = {
 
 const closeIconStyle = {
     position: "relative",
-    top: "-5%",
+    top: "-20px",
     right: "-99.5%",
     cursor: "pointer",
     color: "red",
@@ -43,7 +42,7 @@ const closeIconStyle = {
 const modalTitleStyle = {
     position: "relative",
     textAlign: "center",
-    top: "-10%",
+    top: "-25px",
     color: "darkred",
     fontSize: "3rem",
     fontWeight: "bold",
@@ -109,13 +108,6 @@ export const MainScreen = () => {
         })
     }, []);
 
-    const handleSignOut = async () => {
-        try {
-            await signOut();
-        } catch (error) {
-            console.log('error signing out: ', error);
-        }
-    };
 
     const handleOpen = (artist: Artist) => {
         setSelectedArtist(artist);
@@ -165,7 +157,12 @@ export const MainScreen = () => {
                 >
                     {selectedArtist?.name}
                 </Typography>
-                <Typography id="modal-modal-description" sx={{mt: 2}}>
+                <Typography id="modal-modal-description" sx={{
+                    mt: 2,
+                    padding: '1rem 0rem 1rem 1rem',
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                }}>
                     {selectedArtist?.description}
                 </Typography>
                 {selectedArtist &&
@@ -179,6 +176,7 @@ export const MainScreen = () => {
                                 <ListItem
                                     key={file.Key}
                                     onClick={() => changeSong(file.Url)}
+                                    style={{width: '45%', padding: '2px 0px 5px 0px', cursor: 'pointer'}}
                                 >
                                     {fileName}
                                 </ListItem>

@@ -7,7 +7,7 @@ import {useEffect} from "react";
 Amplify.configure(awsExports)
 
 const TextStyleH1 = styled.h1`
-    font-size: 3rem;
+    font-size: 5rem;
     margin-bottom: 1rem;
     padding-bottom: 2rem;
     text-align: center;

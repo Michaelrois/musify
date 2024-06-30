@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import avatarImage from '../icons8-circled-u-50.png';
+import avatarImage from '../user-menu-logo.png';
 import { signOut } from 'aws-amplify/auth';
 import { DataStore } from '@aws-amplify/datastore';
 import {UserProfile} from '../models';
@@ -245,7 +245,7 @@ function NavigationBar() {
                             </IconButton>
                         </Tooltip>
                         <Menu
-                            sx={{ mt: '45px' }}
+                            sx={{ mt: '45px'}}
                             id="menu-appbar"
                             anchorEl={anchorElUser}
                             anchorOrigin={{

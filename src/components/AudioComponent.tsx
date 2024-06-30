@@ -12,7 +12,15 @@ function AudioComponent({audioRef}: AudioComponentProps) {
         <div className="App">
             <audio
                 ref={audioRef}
-                controls>
+                controls
+                style={{
+                    borderColor: 'darkred',
+                    borderWidth: '2px',
+                    borderStyle: 'solid',
+                    boxShadow: '5px 5px 5px black',
+                   marginTop: '1rem',
+                }}
+            >
                 <source src={audioURL} type="audio/mp3"/>
             </audio>
         </div>
